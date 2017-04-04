@@ -204,10 +204,16 @@ exports.isCanvasInstalled = t => {
   return true;
 };
 
-exports.createServer = handler => {
+exports.createServer = (handler, options) => {
+  options = options || {};
   return new Promise(resolve => {
     const server = http.createServer(handler);
     enablePromisifiedServerDestroy(server);
+    if (options.host !== undefined && options.port !== undefined) {
+      server.listen(options.port, options.host, () => resolve(server));
+      return;
+    }
+
     server.listen(() => resolve(server));
   });
 };

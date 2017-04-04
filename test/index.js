@@ -2,6 +2,7 @@
 
 require("./jsdom/cancel-requests.js");
 require("./jsdom/cookie.js");
+require("./jsdom/cors.js");
 require("./jsdom/encoding.js");
 require("./jsdom/env.js");
 require("./jsdom/inside-worker-smoke-tests.js");
